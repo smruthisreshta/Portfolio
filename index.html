@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smruthi Sreshta | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0f0f;
+    --paper: #f5f2ec;
+    --accent: #c8a96e;
+    --accent-dark: #9b7940;
+    --muted: #7a7369;
+    --border: rgba(15,15,15,0.12);
+    --card-bg: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(245,242,236,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'SKS';
+    position: absolute;
+    right: -0.5rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(12rem, 22vw, 22rem);
+    font-weight: 600;
+    color: rgba(200,169,110,0.07);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-left { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-dark); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 2rem; height: 0.5px; background: var(--accent-dark);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 600; line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent-dark);
+  }
+  .hero-sub {
+    font-size: 1rem; color: var(--muted);
+    margin: 1.5rem 0 2.5rem;
+    max-width: 36ch; line-height: 1.8;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+    padding: 0.75rem 2rem; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    border: 0.5px solid var(--ink); color: var(--ink);
+    padding: 0.75rem 2rem; font-size: 0.8rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: transparent; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-right {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 600; line-height: 1;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.4rem;
+  }
+  .links-row {
+    display: flex; gap: 0.75rem;
+  }
+  .pill-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.08em;
+    padding: 0.6rem 1.25rem;
+    border: 0.5px solid var(--border);
+    color: var(--muted); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    background: var(--card-bg);
+  }
+  .pill-link:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-dark); margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 0.5px; background: var(--border);
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 600; line-height: 1.1;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: start;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1.25rem; font-size: 1rem; }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+
+  .skills-group { margin-bottom: 2rem; }
+  .skills-group-label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.75rem; font-family: 'DM Mono', monospace;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-size: 0.78rem; padding: 0.35rem 0.9rem;
+    border: 0.5px solid var(--border); color: var(--ink);
+    background: var(--card-bg);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .tag.accent { border-color: var(--accent); color: var(--accent-dark); }
+
+  /* PROJECTS */
+  .projects-section { background: var(--ink); color: var(--paper); }
+  .projects-section .section-label { color: var(--accent); }
+  .projects-section .section-label::after { background: rgba(255,255,255,0.1); }
+  .projects-section h2 { color: var(--paper); }
+
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .project-card {
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent); }
+  .project-card::before {
+    content: attr(data-num);
+    position: absolute; top: -0.5rem; right: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 600;
+    color: rgba(200,169,110,0.08); line-height: 1;
+    pointer-events: none;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--paper); margin-bottom: 0.75rem;
+  }
+  .project-desc { font-size: 0.9rem; color: rgba(245,242,236,0.6); margin-bottom: 1.5rem; line-height: 1.8; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project-tag {
+    font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.25rem 0.7rem;
+    border: 0.5px solid rgba(200,169,110,0.4); color: var(--accent);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* EXPERIENCE */
+  .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .exp-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 1.75rem;
+    position: relative;
+  }
+  .exp-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--accent);
+  }
+  .exp-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-dark); margin-bottom: 0.5rem;
+  }
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; margin-bottom: 0.35rem;
+  }
+  .exp-date {
+    font-size: 0.72rem; color: var(--muted);
+    font-family: 'DM Mono', monospace; margin-bottom: 0.9rem;
+  }
+  .exp-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* EDUCATION */
+  .edu-block {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .edu-card {
+    background: var(--card-bg); border: 0.5px solid var(--border); padding: 2.5rem;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .edu-uni { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .edu-meta { display: flex; gap: 2rem; }
+  .edu-meta-item {}
+  .edu-meta-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600; color: var(--accent-dark);
+  }
+  .edu-meta-key { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .edu-right h2 { margin-bottom: 1.25rem; }
+  .edu-right p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; }
+  .courses { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+
+  /* CONTACT */
+  .contact-section { background: var(--paper); text-align: center; }
+  .contact-section h2 { margin: 1rem 0 0.75rem; }
+  .contact-section p { color: var(--muted); max-width: 40ch; margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.9rem 2rem; border: 0.5px solid var(--border);
+    color: var(--ink); text-decoration: none; background: var(--card-bg);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem 4rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 0.75rem; color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero::before { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .projects-grid, .exp-grid, .edu-block { grid-template-columns: 1fr; gap: 2rem; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Smruthi Sreshta</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:8rem;">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">CS Engineer · Graduating May 2026</div>
+    <h1 class="fade-up delay-1">Kavuru Sri<br><em>Smruthi Sreshta</em></h1>
+    <p class="hero-sub fade-up delay-2">
+      Building intelligent systems at the intersection of AI, data, and software engineering. From OCR-powered evidence analysis to interactive analytics dashboards.
+    </p>
+    <div class="hero-ctas fade-up delay-3">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up delay-4">
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">8.47</div>
+        <div class="stat-label">CGPA (till 4-1)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Internships</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2026</div>
+        <div class="stat-label">Graduating</div>
+      </div>
+    </div>
+    <div class="links-row">
+      <a href="https://linkedin.com/in/kavuru-sri-smruthi-sreshta" target="_blank" class="pill-link">↗ LinkedIn</a>
+      <a href="https://github.com/smruthisreshta" target="_blank" class="pill-link">↗ GitHub</a>
+      <a href="mailto:smruthisreshta@gmail.com" class="pill-link">↗ Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--card-bg);">
+  <div class="section-label">01 — About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 style="margin-bottom:1.5rem;">Data meets<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent-dark);">intelligence.</em></h2>
+      <p>I'm a final-year Computer Science student at <strong>Geethanjali College of Engineering and Technology, Hyderabad</strong>, graduating in May 2026 with a CGPA of 8.47.</p>
+      <p>My focus sits at the crossroads of <strong>AI/ML, data analytics, and software development</strong> — I'm drawn to problems where making sense of messy, real-world data can drive meaningful decisions.</p>
+      <p>From building CNN+LSTM models for activity recognition to developing evidence-extraction frameworks using NLP and OCR, I enjoy work that blends research rigour with practical engineering.</p>
+    </div>
+    <div>
+      <div class="skills-group">
+        <div class="skills-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="tag accent">Python</span>
+          <span class="tag accent">SQL</span>
+          <span class="tag">C</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Frameworks & Tools</div>
+        <div class="skill-tags">
+          <span class="tag">OpenCV</span>
+          <span class="tag">Gradio</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">OCR</span>
+          <span class="tag">NLP</span>
+          <span class="tag">CNN + LSTM</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Analytics & Visualization</div>
+        <div class="skill-tags">
+          <span class="tag accent">Power BI</span>
+          <span class="tag accent">Tableau</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">R Shiny</span>
+          <span class="tag">Microsoft Excel</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Languages spoken</div>
+        <div class="skill-tags">
+          <span class="tag">English</span>
+          <span class="tag">Telugu</span>
+          <span class="tag">Hindi</span>
+          <span class="tag">Japanese (learning)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <div class="section-label">02 — Projects</div>
+  <h2>Work that<br><em style="font-style:italic;color:var(--accent);">matters.</em></h2>
+  <div class="projects-grid">
+    <div class="project-card" data-num="01">
+      <div class="project-title">AI Framework for Digital Evidence</div>
+      <p class="project-desc">
+        An AI-based system that automatically extracts and analyzes digital evidence from social media, combining Computer Vision, NLP, and OCR to surface insights from unstructured content.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Gradio</span>
+        <span class="project-tag">NLP</span>
+        <span class="project-tag">OCR</span>
+        <span class="project-tag">Computer Vision</span>
+      </div>
+    </div>
+    <div class="project-card" data-num="02">
+      <div class="project-title">HR Attrition Analytics Dashboard</div>
+      <p class="project-desc">
+        An interactive analytics dashboard that identifies key drivers of employee turnover, empowering HR teams to build evidence-based retention strategies from real organizational data.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Streamlit</span>
+        <span class="project-tag">Data Analytics</span>
+      </div>
+    </div>
+    <div class="project-card" data-num="03">
+      <div class="project-title">Comparative Analysis of Visualization Tools</div>
+      <p class="project-desc">
+        A rigorous evaluation of Power BI, Tableau, R Shiny, and Matplotlib across different business analytics use cases — helping teams make informed tool decisions based on context and scale.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Tableau</span>
+        <span class="project-tag">R Shiny</span>
+        <span class="project-tag">Matplotlib</span>
+      </div>
+    </div>
+    <div class="project-card" data-num="04" style="border-style:dashed;display:flex;align-items:center;justify-content:center;min-height:200px;">
+      <div style="text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:rgba(245,242,236,0.3);margin-bottom:0.5rem;">More coming soon</div>
+        <div style="font-size:0.75rem;color:rgba(245,242,236,0.2);font-family:'DM Mono',monospace;">Next project in the works</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">03 — Experience</div>
+  <h2 style="margin-bottom:0.5rem;">Internships &<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent-dark);">certifications.</em></h2>
+  <p style="color:var(--muted);margin-bottom:2rem;max-width:50ch;">Hands-on ML experience through structured programmes with industry and top institutions.</p>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-org">Cantilever Labs</div>
+      <div class="exp-title">AI/ML Intern</div>
+      <div class="exp-date">Jan 2024 – Mar 2024</div>
+      <p class="exp-desc">Developed a Human Activity Recognition system using a CNN + LSTM architecture with a real-time GUI integration — combining deep learning with live inference for practical usability.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-org">Google × AICTE</div>
+      <div class="exp-title">Virtual AI/ML Intern</div>
+      <div class="exp-date">Jan 2024 – Mar 2024</div>
+      <p class="exp-desc">Completed structured training on end-to-end machine learning workflows: data preprocessing, model training, evaluation, and deployment best practices.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-org">BHASWARA 2025</div>
+      <div class="exp-title">Event Coordinator</div>
+      <div class="exp-date">2025</div>
+      <p class="exp-desc">Organized and led a non-technical event at the college cultural fest, managing end-to-end coordination, team leadership, and on-ground execution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:var(--card-bg);">
+  <div class="section-label">04 — Education</div>
+  <div class="edu-block">
+    <div class="edu-card">
+      <div class="edu-degree">B.Tech in Computer Science</div>
+      <div class="edu-uni">Geethanjali College of Engineering and Technology, Hyderabad</div>
+      <div class="edu-meta">
+        <div class="edu-meta-item">
+          <div class="edu-meta-val">8.47</div>
+          <div class="edu-meta-key">CGPA (till 4-1)</div>
+        </div>
+        <div class="edu-meta-item">
+          <div class="edu-meta-val">'22–'26</div>
+          <div class="edu-meta-key">Duration</div>
+        </div>
+      </div>
+    </div>
+    <div class="edu-right">
+      <h2>Built on<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent-dark);">strong fundamentals.</em></h2>
+      <p>A rigorous four-year programme in Computer Science, covering the theoretical and applied foundations of modern software and data engineering.</p>
+      <div class="courses">
+        <span class="tag">Data Structures</span>
+        <span class="tag">Algorithms</span>
+        <span class="tag">DBMS</span>
+        <span class="tag">Operating Systems</span>
+        <span class="tag">Computer Networks</span>
+        <span class="tag">Machine Learning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label" style="justify-content:center;">05 — Let's connect</div>
+  <h2>Open to opportunities.</h2>
+  <p>Looking for roles in software development, data analytics, or AI/ML. If you think we'd be a good fit, I'd love to hear from you.</p>
+  <div class="contact-links">
+    <a href="mailto:smruthisreshta@gmail.com" class="contact-link">✉ smruthisreshta@gmail.com</a>
+    <a href="tel:+918688419723" class="contact-link">✆ +91 86884 19723</a>
+    <a href="https://linkedin.com/in/kavuru-sri-smruthi-sreshta" target="_blank" class="contact-link">↗ LinkedIn</a>
+    <a href="https://github.com/smruthisreshta" target="_blank" class="contact-link">↗ GitHub</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Kavuru Sri Smruthi Sreshta · Hyderabad, India · Built with care
+</footer>
+
+</body>
+</html>
